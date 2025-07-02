@@ -1,4 +1,5 @@
 from models.mae import MAE
+from data.provider import provider
 
 class Trainer:
     def __init__(self):
@@ -13,4 +14,8 @@ class Trainer:
         pass
     
     def train(self):
-        pass
+        dataset,dataloader = provider()
+        
+        for x,y in dataloader:
+            print(x.shape,y.shape)
+            break
