@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from element.layer import Encoder, Interpolator,Decoder,mask_it
+
 class MAE(nn.Module):
     def __init__(self):
         super(MAE,self).__init__()
@@ -22,11 +23,6 @@ class MAE(nn.Module):
         return x_enc, x_dec, masks
 
     def forward(self, x, masks, mode):
-        """Existing mode:
-            1. train_ae
-            2. train_mae
-            3. random_generation
-            4. cross_generation"""
 
         if mode == 'train_ae':
             x_encoded, x_decoded, masks = self.forward_ae(x, masks)
